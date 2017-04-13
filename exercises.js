@@ -9,10 +9,14 @@
 var test = "I put my thing down flip it and reverse it.";
 
 function firstReverse (str){
-  var arr = str.split('');
-  var newArr = arr.reverse();
-  var reversedString = newArr.join('');
-  return reversedString;
+  if (typeof str !== 'string'){
+    return null;
+  } else {
+    var arr = str.split('');
+    var newArr = arr.reverse();
+    var reversedString = newArr.join('');
+    return reversedString;
+  }
 }
 
 console.log(firstReverse(test));
@@ -27,10 +31,14 @@ console.log(firstReverse(test));
 
 
 function alphaOrder (str){
-  var arr = str.split('');
-  var newArr = arr.sort();
-  var alphaStr = newArr.join ('');
-  return alphaStr;
+  if (typeof str !== 'string'){
+    return null;
+  } else {
+    var arr = str.split('');
+    var newArr = arr.sort();
+    var alphaStr = newArr.join ('');
+    return alphaStr;
+  }
 }
 
 console.log(alphaOrder('cake'));
@@ -44,14 +52,18 @@ console.log(alphaOrder('cake'));
  */
 
 function vowelCount (str){
-  var arr = str.split('');
-  var count = 0;
-  for (i = 0; i < arr.length; i++){
-    if (arr[i] === 'a' || arr[i] === 'A' || arr[i] === 'e' || arr[i] === 'E' || arr[i] === 'i' || arr[i] === 'I' || arr[i] === 'o' || arr[i] === 'O' || arr[i] === 'u' || arr[i] === 'U'){
+  if (typeof str !== 'string'){
+    return null;
+  } else {
+    var arr = str.split('');
+    var count = 0;
+    for (i = 0; i < arr.length; i++){
+      if (arr[i] === 'a' || arr[i] === 'A' || arr[i] === 'e' || arr[i] === 'E' || arr[i] === 'i' || arr[i] === 'I' || arr[i] === 'o' || arr[i] === 'O' || arr[i] === 'u' || arr[i] === 'U'){
         count++;
+      }
     }
-  }
   return count;
+  }
 }
 
 console.log(vowelCount('Amazonian'));
@@ -65,6 +77,18 @@ console.log(vowelCount('Amazonian'));
  * ie: 68 => 1:8
  */
 
+ function timeConvert (str){
+  if (typeof str !== 'number'){
+    return null;
+  } else {
+    var hours = Math.floor(str/60);
+    var minutes = str % 60;
+    return hours + ':' + minutes;
+  }
+ }
+
+ console.log(timeConvert(125));
+
  /** Function: repeatString
  * The function will take in two parameters and repeat a given string (first argument)
  * num times (second argument). Return an empty string if num is a negative number
@@ -74,6 +98,25 @@ console.log(vowelCount('Amazonian'));
  * i.e repeatString("money", 3) => "moneymoneymoney".
  */
 
+function repeatString (str, num){
+  if (typeof str !== 'string'){
+    return null;
+  } else if(typeof num !== 'number') {
+    return null;
+  } else {
+    var finalStr = '';
+    if (num > 0){
+      for (i = 0; i < num; i++){  
+      finalStr += str;
+      }
+    } else {
+      finalStr = '';
+    }
+    return finalStr;
+  }
+}
+
+console.log(repeatString('money', 5));
 
 /**
  * Below here we see a module.exports which is set to an object with a bunch of keys.
@@ -93,6 +136,6 @@ module.exports = {
     firstReverse: firstReverse,
     alphaOrder: alphaOrder,
     vowelCount: vowelCount,
-    timeConvert: null,
-    repeatString: null
+    timeConvert: timeConvert,
+    repeatString: repeatString
 }
